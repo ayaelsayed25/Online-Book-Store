@@ -166,6 +166,7 @@ public class Books implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
+        query= "SELECT ISBN,title,publisher,publication_year,price,category FROM BOOK";
         switch (action) {
             case "add":
                 if (books.getSelectedRow() != -1){
@@ -174,46 +175,33 @@ public class Books implements ActionListener {
                 }
                 break;
             case "search":
-                if (!(isbn.getText().equals("")) || !(title.getText().equals("")) || !(publisher.getText().equals("")) || !(author.getText().equals("")) || !(category.getSelectedItem().equals(""))) {
                     query += " WHERE ";
+                    query += " category = " +'"'+ category.getSelectedItem()+'"';
+
                     if (!isbn.getText().equals("")) {
+                        query += " AND ";
                         query += " ISBN = " + isbn.getText();
                     }
                     if (!title.getText().equals("")) {
-                        if (!isbn.getText().equals("")) {
-                            query += ",";
-                        }
+                        query += " AND ";
                         query += " title = "+'"'+  title.getText()+'"';
                     }
                     if (!publisher.getText().equals("")) {
-                        if (!isbn.getText().equals("") || !title.getText().equals("")) {
-                            query += ",";
-                        }
+                        query += " AND ";
                         query += " publisher = " +'"' + publisher.getText()+'"';
                     }
-                    if (!category.getSelectedItem().equals("")) {
-                        if (!(isbn.getText().equals("")) || !(title.getText().equals("")) || !(publisher.getText().equals(""))) {
-                            query += ",";
-                        }
-                        query += " category = " +'"'+ category.getSelectedItem()+'"';
-                    }
                     if (!author.getText().equals("")) {
-                        if (!(isbn.getText().equals("")) || !(title.getText().equals("")) || !(publisher.getText().equals(""))) {
-                            query += ",";
-                        }
-                        query += " author = " +'"'+ author.getText()+'"';
-                        query.replace("FROM BOOK","FROM BOOK NATURAL JOIN AUTHOR");
+                        query += " AND ";
+                        query += " AUTHOR.name = " +'"'+ author.getText()+'"';
+                        query = query.replace("FROM BOOK","FROM BOOK NATURAL JOIN AUTHOR");
                     }
                     data = booksController.showBooks(query);
-                    DefaultTableModel model = (DefaultTableModel) books.getModel();
-                    model.fireTableDataChanged();
-                    books.setModel(model);
-                    books.revalidate();
-                    booksPanel.updateUI();
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Search fields are empty!");
-                }
+                    if ((int)data[0][0] == 0 && (int)data[0][1] == 0){
+                        JOptionPane.showMessageDialog(booksPanel,"An error occurred");
+                    }
+                    else {
+                        updateTable(data);
+                    }
                 break;
             case "cart":
                 main.navigate("cart");
@@ -224,6 +212,11 @@ public class Books implements ActionListener {
     public JPanel getPanel()
     {
         return this.booksPanel;
+    }
+    private void updateTable(Object[][] newData){
+        DefaultTableModel model = new DefaultTableModel(newData, columnNames);
+        books.setModel(model);
+        booksPanel.repaint();
     }
 
 

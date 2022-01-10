@@ -3,6 +3,7 @@ package Controllers;
 import Utils.Message;
 import Utils.Order;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -45,7 +46,8 @@ public class BooksController{
                 data[i] = d.get(i);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            data = new Object[][]{{0, 0}};
+            return data;
         }
         return data;
     }
