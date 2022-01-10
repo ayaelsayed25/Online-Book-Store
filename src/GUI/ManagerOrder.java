@@ -4,7 +4,6 @@ package GUI;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.ModuleLayer.Controller;
 import java.sql.Connection;
 import java.util.LinkedList;
 
@@ -32,10 +31,10 @@ public class ManagerOrder {
 		panel.setBackground(Style.backgroundColor);
 		panel.setLayout(null);
 		
-		JLabel title = new JLabel("Order From Publisher");
+		JLabel title = new JLabel("Order Books from Publisher");
 		title.setFont(Style.boldFont);
 		title.setForeground(Style.fontColorWhite);
-		title.setBounds(70, 10, 337, 70);
+		title.setBounds(70, 10, 350, 70);
 		panel.add(title);
 		
 		JLabel publisherlbl = new JLabel("Publisher Name:");
