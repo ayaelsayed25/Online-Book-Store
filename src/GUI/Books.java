@@ -163,11 +163,6 @@ public class Books implements ActionListener {
 
     }
 
-    public JPanel getPanel()
-    {
-        return this.booksPanel;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
@@ -224,6 +219,11 @@ public class Books implements ActionListener {
                 main.navigate("cart");
                 break;
         }
+    }
+
+    public JPanel getPanel()
+    {
+        return this.booksPanel;
     }
 
 
