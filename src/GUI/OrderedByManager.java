@@ -10,6 +10,7 @@ import java.sql.Connection;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import Controllers.OrderController;
@@ -85,6 +86,12 @@ public class OrderedByManager {
 		{
 			JOptionPane.showMessageDialog(panel, msg.content);
 			//update orders table
+	        String manager_id = "root";
+			Object[][] data = controller.getOrders(manager_id);
+	        String[] columnNames = {"Order ID","Publisher", "Order Date"};
+		    DefaultTableModel model = new DefaultTableModel(data, columnNames);
+		    orders.setModel(model); 
+			panel.repaint();
 		}
 		else
 			JOptionPane.showMessageDialog(panel,msg.content);
