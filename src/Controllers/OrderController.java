@@ -1,9 +1,9 @@
 package Controllers;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import com.mysql.jdbc.Connection;
 
 import Utils.Message;
 import Utils.Order;
