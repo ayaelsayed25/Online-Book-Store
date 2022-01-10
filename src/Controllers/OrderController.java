@@ -13,7 +13,7 @@ import Utils.Order;
 
 public class OrderController{
 	private Connection con;
-	public OrderController(java.sql.Connection con2)
+	public OrderController(Connection con2)
 	{
 		this.con = con2;
 	}
