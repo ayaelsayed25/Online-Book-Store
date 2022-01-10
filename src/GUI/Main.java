@@ -1,14 +1,9 @@
 package GUI;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -48,10 +43,18 @@ public class Main {
 //		JPanel Home = new JPanel();
 //		Home.setBackground(new Color(0, 0, 0));
 //		mainPanel.add(Home,"Home");
+
+		
+
+		
+		OrderedByManager orderedByMng = new OrderedByManager(con);
+		JPanel ordersPanel = orderedByMng.getPanel();
+		mainPanel.add(ordersPanel ,"OrderedByManager");
 		
 		ManagerOrder managerOrder = new ManagerOrder(con);
 		JPanel MngOrder = managerOrder.getPanel();
 		mainPanel.add(MngOrder,"ManagerOrder");
+		
 
 		Books books = new Books(con);
 		JPanel booksPanel = books.getPanel();

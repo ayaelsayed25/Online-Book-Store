@@ -2,7 +2,6 @@ package GUI;
 
 import Controllers.BooksController;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
