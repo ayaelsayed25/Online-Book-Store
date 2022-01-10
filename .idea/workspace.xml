@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eac5514e-a40b-4bc9-91af-2e7fec32e28e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnlineStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OnlineStore.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Controllers/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Controllers/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/ManagerOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/ManagerOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Style.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Style.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Books.java" afterDir="false" />
+    <list default="true" id="eac5514e-a40b-4bc9-91af-2e7fec32e28e" name="Default Changelist" comment="..">
       <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Style.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +86,14 @@
       <updated>1641790669209</updated>
       <workItem from="1641790677015" duration="14000" />
     </task>
+    <task id="LOCAL-00001" summary="..">
+      <created>1641806458101</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641806458101</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,5 +107,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=".." />
+    <option name="LAST_COMMIT_MESSAGE" value=".." />
   </component>
 </project>
