@@ -16,11 +16,11 @@ public class ManagerOrder {
 		JLabel title = new JLabel("Order From Publisher");
 		title.setFont(Style.boldFont);
 		title.setForeground(Style.fontColorWhite);
-		title.setBounds(370, 10, 337, 70);
+		title.setBounds(70, 10, 337, 70);
 		panel.add(title);
 		
 		JLabel publisherlbl = new JLabel("Publisher Name:");
-		publisherlbl.setBounds(34, 60, 71, 40);
+		publisherlbl.setBounds(140, 90, 200, 40);
 		publisherlbl.setForeground(Style.fontColorGrey);
 		publisherlbl.setFont(Style.normalFont);
 		panel.add(publisherlbl);
@@ -28,7 +28,7 @@ public class ManagerOrder {
 		publisherName = new JTextField();
 		publisherName.setForeground(Style.fontColorGrey);
 		publisherName.setFont(Style.normalFont);
-		publisherName.setBounds(130, 69, 219, 32);
+		publisherName.setBounds(340, 90, 200, 40);
 		panel.add(publisherName);
 		publisherName.setColumns(10);
 

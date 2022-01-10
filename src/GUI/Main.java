@@ -48,27 +48,26 @@ public class Main {
 		
 		//add panels 
 		//Routing
-		JPanel Home = new JPanel();
-		Home.setBackground(new Color(0, 0, 0));
-		mainPanel.add(Home,"Home");
+//		JPanel Home = new JPanel();
+//		Home.setBackground(new Color(0, 0, 0));
+//		mainPanel.add(Home,"Home");
 		
 		ManagerOrder managerOrder = new ManagerOrder();
 		JPanel MngOrder = managerOrder.getPanel();
-		MngOrder.setBackground(new Color(0, 250, 154));
 		mainPanel.add(MngOrder,"ManagerOrder");
 
 		
-		JButton editBtn= new JButton();
-		editBtn.setForeground(new Color(0, 51, 102));
-		editBtn.setBackground(new Color(204, 204, 204));
-		editBtn.setBounds(206, 494, 90, 41);
-		Home.add(editBtn);
-		editBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				navigate("ManagerOrder");
-			
-			}
-		});
+//		JButton editBtn= new JButton();
+//		editBtn.setForeground(new Color(0, 51, 102));
+//		editBtn.setBackground(new Color(204, 204, 204));
+//		editBtn.setBounds(206, 494, 90, 41);
+//		Home.add(editBtn);
+//		editBtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				navigate("ManagerOrder");
+//			
+//			}
+//		});
 
 	}
 	public void navigate(String nav)
