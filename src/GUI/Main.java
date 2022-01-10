@@ -12,8 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Controllers.OrderController;
-
 import java.sql.*;
 
 public class Main {
@@ -22,9 +20,8 @@ public class Main {
 	Connection con;
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public Main() {
-		initialize();
 		connectToDB();
-		OrderController orderCont = new OrderController(con);
+		initialize();
 	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -52,11 +49,10 @@ public class Main {
 //		Home.setBackground(new Color(0, 0, 0));
 //		mainPanel.add(Home,"Home");
 		
-		ManagerOrder managerOrder = new ManagerOrder();
+		ManagerOrder managerOrder = new ManagerOrder(con);
 		JPanel MngOrder = managerOrder.getPanel();
 		mainPanel.add(MngOrder,"ManagerOrder");
 
-		
 //		JButton editBtn= new JButton();
 //		editBtn.setForeground(new Color(0, 51, 102));
 //		editBtn.setBackground(new Color(204, 204, 204));
