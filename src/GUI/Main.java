@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Controllers.OrderController;
+
 import java.sql.*;
 
 public class Main {
@@ -21,6 +24,7 @@ public class Main {
 	public Main() {
 		initialize();
 		connectToDB();
+		OrderController orderCont = new OrderController(con);
 	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,26 +48,26 @@ public class Main {
 		
 		//add panels 
 		//Routing
-		JPanel Home = new JPanel();
-		Home.setBackground(new Color(0, 0, 0));
-		mainPanel.add(Home,"Home");
+//		JPanel Home = new JPanel();
+//		Home.setBackground(new Color(0, 0, 0));
+//		mainPanel.add(Home,"Home");
 		
-		JPanel ManagerOrder = new JPanel();
-		ManagerOrder.setBackground(new Color(0, 250, 154));
-		mainPanel.add(ManagerOrder,"ManagerOrder");
+		ManagerOrder managerOrder = new ManagerOrder();
+		JPanel MngOrder = managerOrder.getPanel();
+		mainPanel.add(MngOrder,"ManagerOrder");
 
 		
-		JButton editBtn= new JButton();
-		editBtn.setForeground(new Color(0, 51, 102));
-		editBtn.setBackground(new Color(204, 204, 204));
-		editBtn.setBounds(206, 494, 90, 41);
-		Home.add(editBtn);
-		editBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				navigate("ManagerOrder");
-			
-			}
-		});
+//		JButton editBtn= new JButton();
+//		editBtn.setForeground(new Color(0, 51, 102));
+//		editBtn.setBackground(new Color(204, 204, 204));
+//		editBtn.setBounds(206, 494, 90, 41);
+//		Home.add(editBtn);
+//		editBtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				navigate("ManagerOrder");
+//			
+//			}
+//		});
 
 	}
 	public void navigate(String nav)
