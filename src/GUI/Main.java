@@ -11,7 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import Controllers.BooksController;
 import Controllers.OrderController;
 
 import java.sql.*;
@@ -22,9 +24,8 @@ public class Main {
 	Connection con;
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public Main() {
-		initialize();
 		connectToDB();
-		OrderController orderCont = new OrderController(con);
+		initialize();
 	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -45,29 +46,15 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel = new JPanel(new CardLayout());
 		frame.getContentPane().add(mainPanel);
-		
-		//add panels 
-		//Routing
-//		JPanel Home = new JPanel();
-//		Home.setBackground(new Color(0, 0, 0));
-//		mainPanel.add(Home,"Home");
-		
+
 		ManagerOrder managerOrder = new ManagerOrder();
 		JPanel MngOrder = managerOrder.getPanel();
-		mainPanel.add(MngOrder,"ManagerOrder");
-
-		
-//		JButton editBtn= new JButton();
-//		editBtn.setForeground(new Color(0, 51, 102));
-//		editBtn.setBackground(new Color(204, 204, 204));
-//		editBtn.setBounds(206, 494, 90, 41);
-//		Home.add(editBtn);
-//		editBtn.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				navigate("ManagerOrder");
-//			
-//			}
-//		});
+		Books books = new Books(con);
+		JPanel booksPanel = books.getPanel();
+		BooksController bookCont = new BooksController(con);
+		mainPanel.add(booksPanel,"showBooks");
+		navigate("showBooks");
+		bookCont.showBooks();
 
 	}
 	public void navigate(String nav)
