@@ -53,9 +53,16 @@ public class Main {
 		JPanel MngOrder = managerOrder.getPanel();
 		mainPanel.add(MngOrder,"ManagerOrder");
 
-		Books books = new Books(con);
+		Cart cart = new Cart(con,this);
+		JPanel cartPanel = cart.getPanel();
+		mainPanel.add(cartPanel,"cart");
+
+		Books books = new Books(con,this,cart);
 		JPanel booksPanel = books.getPanel();
 		mainPanel.add(booksPanel,"showBooks");
+		navigate("showBooks");
+
+
 //		JButton editBtn= new JButton();
 //		editBtn.setForeground(new Color(0, 51, 102));
 //		editBtn.setBackground(new Color(204, 204, 204));

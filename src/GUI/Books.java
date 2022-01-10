@@ -4,10 +4,14 @@ import Controllers.BooksController;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
 
-public class Books {
+public class Books implements ActionListener {
     private JPanel booksPanel;
     private JScrollPane booksScrollPane;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -20,23 +24,29 @@ public class Books {
     private JTextField title;
     private JLabel titleLabel;
     //need to be combobox
-    private JTextField category;
+    private JComboBox category;
     private JLabel categoryLabel;
     private JTextField author;
     private JLabel authorLabel;
     private JTextField publisher;
     private JLabel publisherLabel;
-
-    public Books(java.sql.Connection con)
+    String query= "SELECT ISBN,title,publisher,publication_year,price,category FROM BOOK";
+    BooksController booksController;
+    Main main;
+    Cart cart;
+    Object[][] data;
+    String[] columnNames = {"ISBN","Title","Publisher","Publication Year","Price","Category"};
+    public Books(Connection con, Main main, Cart cart)
     {
-        BooksController booksController = new BooksController(con);
+        this.main = main;
+        this.cart = cart;
+        booksController = new BooksController(con);
         booksPanel = new JPanel();
         booksPanel.setBackground(Style.backgroundColor);
         booksPanel.setLayout(null);
 
         //books table
-        String[] columnNames = {"ISBN","Title","Publisher","Publication Year","Price","Category"};
-        Object[][] data = booksController.showBooks();
+        data = booksController.showBooks(query);
         books = new JTable(data, columnNames);
         books.setGridColor(Style.backgroundColor);
         books.setSelectionBackground(Style.color);
@@ -63,7 +73,7 @@ public class Books {
         addButton.setBackground(Style.color);
         addButton.setForeground(Style.fontColorWhite);
         booksPanel.add(addButton);
-//        addButton.addActionListener( this);
+        addButton.addActionListener( this);
         addButton.setActionCommand("add");
 
         ///cartButton
@@ -73,8 +83,8 @@ public class Books {
         cartButton.setBackground(new Color(247, 56, 89));
         cartButton.setForeground(Style.fontColorWhite);
         booksPanel.add(cartButton);
-//        addButton.addActionListener( this);
-        addButton.setActionCommand("cart");
+        cartButton.addActionListener( this);
+        cartButton.setActionCommand("cart");
 
         //ISBN text field
         isbn = new JTextField();
@@ -129,9 +139,10 @@ public class Books {
         booksPanel.add(authorLabel);
 
         //category text field
-        category = new JTextField();
+        category = new JComboBox();
         category.setBounds(880, 10, 150, 30);
-        category.setColumns(1);
+        category.setModel(new DefaultComboBoxModel(new String[]{"Science", "Art", "Religion", "History", "Geography"}));
+        category.setBackground(Style.fontColorWhite);
         booksPanel.add(category);
 
         //category label
@@ -148,8 +159,8 @@ public class Books {
         searchButton.setBackground(Style.color);
         searchButton.setForeground(Style.fontColorWhite);
         booksPanel.add(searchButton);
-//        addButton.addActionListener( this);
         searchButton.setActionCommand("search");
+        searchButton.addActionListener( this);
 
     }
 
@@ -157,5 +168,64 @@ public class Books {
     {
         return this.booksPanel;
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String action = e.getActionCommand();
+        switch (action) {
+            case "add":
+                if (books.getSelectedRow() != -1){
+                    int bookIndex = books.getSelectedRow();
+                    cart.buyBook(data[bookIndex]);
+                }
+                break;
+            case "search":
+                if (!(isbn.getText().equals("")) || !(title.getText().equals("")) || !(publisher.getText().equals("")) || !(author.getText().equals("")) || !(category.getSelectedItem().equals(""))) {
+                    query += " WHERE ";
+                    if (!isbn.getText().equals("")) {
+                        query += " ISBN = " + isbn.getText();
+                    }
+                    if (!title.getText().equals("")) {
+                        if (!isbn.getText().equals("")) {
+                            query += ",";
+                        }
+                        query += " title = "+'"'+  title.getText()+'"';
+                    }
+                    if (!publisher.getText().equals("")) {
+                        if (!isbn.getText().equals("") || !title.getText().equals("")) {
+                            query += ",";
+                        }
+                        query += " publisher = " +'"' + publisher.getText()+'"';
+                    }
+                    if (!category.getSelectedItem().equals("")) {
+                        if (!(isbn.getText().equals("")) || !(title.getText().equals("")) || !(publisher.getText().equals(""))) {
+                            query += ",";
+                        }
+                        query += " category = " +'"'+ category.getSelectedItem()+'"';
+                    }
+                    if (!author.getText().equals("")) {
+                        if (!(isbn.getText().equals("")) || !(title.getText().equals("")) || !(publisher.getText().equals(""))) {
+                            query += ",";
+                        }
+                        query += " author = " +'"'+ author.getText()+'"';
+                        query.replace("FROM BOOK","FROM BOOK NATURAL JOIN AUTHOR");
+                    }
+                    data = booksController.showBooks(query);
+                    DefaultTableModel model = (DefaultTableModel) books.getModel();
+                    model.fireTableDataChanged();
+                    books.setModel(model);
+                    books.revalidate();
+                    booksPanel.updateUI();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Search fields are empty!");
+                }
+                break;
+            case "cart":
+                main.navigate("cart");
+                break;
+        }
+    }
+
 
 }

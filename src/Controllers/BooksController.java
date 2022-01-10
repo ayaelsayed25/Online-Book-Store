@@ -14,19 +14,17 @@ public class BooksController{
     {
         this.con = con2;
     }
-    public Object[][] showBooks()
+    public Object[][] showBooks(String query)
     {
-        String query;
         List<Object[]> d = new ArrayList<>();
-        Object[] column = new Object[6];
         Object[][] data = new Object[0][];
         try {
             //get books
-            query = "SELECT ISBN,title,publisher,publication_year,price,category FROM BOOK ";
             PreparedStatement stm = con.prepareStatement(query);
             ResultSet rs = stm.executeQuery();
             while (rs.next())
             {
+                Object[] column = new Object[6];
                 int isbn = rs.getInt("ISBN");
                 column[0] = isbn;
                 String title = rs.getString("title");
@@ -35,7 +33,7 @@ public class BooksController{
                 column[2] = publisher;
                 Date publication_year = rs.getDate("publication_year");
                 column[3] = publication_year;
-                int price = rs.getInt("price");
+                double price = rs.getDouble("price");
                 column[4] = price;
                 String category = rs.getString("category");
                 column[5] = category;
@@ -51,4 +49,5 @@ public class BooksController{
         }
         return data;
     }
+
 }
