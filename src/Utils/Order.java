@@ -1,8 +1,8 @@
 package Utils;
 
 public class Order {
-	int ISBN;
-	int num_of_copies;
+	public int ISBN;
+	public int num_of_copies;
 	public Order(int ISBN, int num_of_copies)
 	{
 		this.ISBN = ISBN;
