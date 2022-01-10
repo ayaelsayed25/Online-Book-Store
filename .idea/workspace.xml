@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eac5514e-a40b-4bc9-91af-2e7fec32e28e" name="Default Changelist" comment="..">
-      <change afterPath="$PROJECT_DIR$/src/Controllers/CartConroller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/ManagerOrder$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/ManagerOrder$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/ManagerOrder$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/ManagerOrder$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/GUI/ManagerOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GUI/ManagerOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Utils/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Utils/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/BooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Controllers/BooksController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Controllers/CartConroller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Books.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/GUI/Cart.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641807275955</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="..">
+      <created>1641822725200</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641822725200</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
